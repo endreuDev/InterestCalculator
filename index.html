@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compound interest calculator">
+    <meta name="keywords" content="compound, interest, calculator, investment">
+    <meta name="author" content="Andrew Oliveira">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap');
+    </style>
+    <title>Compound Interest Calculator</title>
+    <link rel="icon" type="image/x-icon" href="Images/Calculator.png">
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <h1 class="main-header align-center">Compound Interest Calculator</h1>
+            
+            <form id="calculator-form" name="Calculator">
+                <label id="deposit-label" for="deposit">Initial deposit:</label>
+                <div class="cash-symbol">$</div><input id="deposit" type="number" placeholder=" 5000" required inputmode="numeric">
+    
+                <label id="contribution-label" for="contribution">Contribution ammount:</label>
+                <div class="cash-symbol align-center">$</div><input id="contribution" type="number" placeholder=" 500" required inputmode="numeric">
+                
+                <div id="frequency-title">Contribution frequency:</div>
+                <div class="frequency-selection">
+                    <input id="monthly" type="radio" name="contribution-frequency" value="monthly" checked>
+                    <label for="monthly">Monthly</label>
+    
+                    <input id="annually" type="radio" name="contribution-frequency" value="annually">
+                    <label for="annually">Annually</label>
+                </div>
+                
+                <label id="interest-label" for="interest">Interest rate:</label>
+                <input id="interest" class="percent-icon" type="number" placeholder="5" required inputmode="numeric">
+                <select id="interest-dropdown">
+                    <option value="monthly">Monthly</option>
+                    <option value="annually">Annually</option>
+                </select>
+    
+                <label id="duration-label" for="duration">Duration:</label>
+                <input id="duration" type="number" placeholder="6" required inputmode="numeric">
+                <select id="duration-dropdown">
+                    <option value="months">Month(s)</option>
+                    <option value="years">Year(s)</option>
+                </select>
+    
+                <input id="submit" type="submit" value="Calculate">
+            </form>
+            
+            <button id="export" onclick="exportData('xlsx', 'CompoundInterest')">Export table to Excel</button>
+
+            <table id="results-table" class="align-center" style="display: none;">
+                <thead>
+                    <th>Month</th>
+                    <th>Interest</th>
+                    <th>Accrued Interest</th>
+                    <th>Balance</th>
+                </thead>
+                <tbody id="table-body"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
