@@ -164,3 +164,8 @@ tr:nth-child(even) {
         opacity: 1;
     }
 }
+
+footer {
+    padding: 10px;
+    padding-bottom: 20px;
+}
